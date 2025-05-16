@@ -13,7 +13,7 @@ mongoose.connect('mongodb+srv://sherine:flori@cluster0.i6fy0fl.mongodb.net/?retr
 }).then(()=>{console.log("DATABASE CONNECTED SUCCESSFULLY")}).catch((error)=>{console.log(error)})
 
 app.use(express.json())
-app.use(User)
+app.use(User) 
 app.use(Admin)
 app.use(Routemodel)
 app.use(Seat)
