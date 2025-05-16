@@ -3,7 +3,13 @@ const mongoose = require('mongoose')
 const Trainschema = new mongoose.Schema({
     TrainName:String,
     TrainCode:Number,
-    Route_id:{
+    Date:Date,
+    JourneyTime:{
+    type: String,
+    required: true,
+    match: /^([01]?[0-9]|2[0-3]):([0-5][0-9])$/
+  },
+  Route_id:{
         ref:"Route",
         type:mongoose.Schema.Types.ObjectId
     },
