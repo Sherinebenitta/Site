@@ -5,8 +5,8 @@ export default function Adminsign(){
     <form>
         <input type="Number" placeholder="Enter AdminId" /><br/><br/>
         <input type="password" placeholder="Enter Password"/><br/><br/>
-        <button type="submit">Sign-Up</button>
-        <Link to={'/Admin'}></Link>
+        <button type="submit">Sign-Up</button><br/><br/>
+        <Link to={'/Admin'}>Admin</Link>
     </form>
     </>
 }

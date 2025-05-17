@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express();
+const cors = require('cors')
 const mongoose = require('mongoose')
 const User = require('./source files/Controllers/User')
 const Admin = require('./source files/Controllers/Admin');
@@ -13,6 +14,7 @@ mongoose.connect('mongodb+srv://sherine:flori@cluster0.i6fy0fl.mongodb.net/?retr
 }).then(()=>{console.log("DATABASE CONNECTED SUCCESSFULLY")}).catch((error)=>{console.log(error)})
 
 app.use(express.json())
+app.use(cors())
 app.use(User) 
 app.use(Admin)
 app.use(Routemodel)
