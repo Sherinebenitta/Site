@@ -23,7 +23,8 @@ export default function Entry(){
     }
     const Check = ()=>{
         let token = localStorage.getItem('token');
-        return token && id ? <Outlet/> : <Navigate to={'/'}/>
+        let id = localStorage.getItem('ID')
+        return token || id ? <Outlet/> : <Navigate to={'/'}/>
     }
 
     useEffect(()=>{
@@ -36,9 +37,10 @@ export default function Entry(){
         <Route path="/Admin" element={<Admin/>}/>
         <Route path="/Usersignin" element={<Login/>} />
         <Route path="/Adminsign" element={<Adminsign/>} />
-        <Route element={<Check/>}/>
+        <Route element={<Check/>}>
         <Route path="/Ticket" element={<Ticket/>} />
         <Route path="/Profile" element={<Profile/>}/>
+        </Route>
     </Routes>
     </>
 }
