@@ -1,28 +1,30 @@
-import { Link } from "react-router-dom";
-import {useState} from 'react';
-import axiosinstance from "../axiosInstance/axiosinstance";
-
-export default function Login(){
+import { useState } from "react"
+import { Link } from "react-router-dom"
+import axiosinstance from "../axiosInstance/axiosinstance"
+import { useNavigate } from "react-router-dom"
+export default function User(){
     const [Username,setusername] = useState('')
-    const [Password,setpassword] = useState('');
+    const [Password,setpassword] = useState('')
+    const navigate = useNavigate()
+    const loginuser = ()=>{
+        axiosinstance.post('http://localhost:8000/login-user',{Username,Password}).then(res=>{
+          navigate('/Ticket')  
+        })
+    }
 
-    const newuser =()=>{ axiosinstance.post('http://localhost:8000/sign-in',{Username,Password}).then(res=>{
-        
-    })
-}
-    
     const onsubmit = e=>{
-            e.preventDefault();
-            newuser();
-            setusername('')
-            setpassword('')
-        }
+        e.preventDefault();
+        loginuser();
+        setusername('');
+        setpassword('')
+    }
     return <>
     <form onSubmit={onsubmit}>
-    <input onChange={e=>{setusername(e.target.value)}} value={Username} placeholder="Enter username"/><br/><br/>
-    <input onChange={e=>{setpassword(e.target.value)}} value={Password} placeholder="Enter password" type="password"/><br/><br/>
-    <button>Sign-Up</button><br/>
-    <Link to={'/'}>Home</Link>
+        <input onChange={e=>{setusername(e.target.value)}} value={Username} placeholder="Enter username"/><br/><br/>
+        <input onChange={e=>{setpassword(e.target.value)}} value={Password} placeholder="Enter password" type="password"/><br/><br/>
+        <button type="submit">Login</button>
+        <p>New User</p>
+        <Link to={'/Usersignin'}>Sign-Up</Link>
     </form>
     </>
 }
