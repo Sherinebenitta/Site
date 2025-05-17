@@ -2,13 +2,18 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import axiosinstance from "../axiosInstance/axiosinstance"
 import { useNavigate } from "react-router-dom"
+import axios from "axios"
 export default function User(){
     const [Username,setusername] = useState('')
     const [Password,setpassword] = useState('')
     const navigate = useNavigate()
     const loginuser = ()=>{
         axiosinstance.post('http://localhost:8000/login-user',{Username,Password}).then(res=>{
-          navigate('/Ticket')  
+          navigate('/Ticket') 
+          axiosinstance.defaults.headers['token'] = res.data?.token ;
+          localStorage.setItem('token',res.data?.token)
+          axiosinstance.defaults.headers['User'] = res.data?.User;
+          localStorage.setItem('ID',res.data?.User?._id)
         })
     }
 

@@ -16,8 +16,8 @@ router.post("/login-user",async(req,res)=>{
     const presentuser = await User.findOne({Username:loginuser?.Username})
     if(!presentuser) return res.status(500).send("User Not Registered Yet")
     if(loginuser?.Password != presentuser?.Password) return res.status(500).send("Invalid password")
-    const token = await webtoken.sign({User:loginuser},'User')
-    res.json({User:loginuser,token})
+    const token = await webtoken.sign({User:presentuser},'User')
+    res.json({User:presentuser,token})
 })
 
 module.exports = router;
