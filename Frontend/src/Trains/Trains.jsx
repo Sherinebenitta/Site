@@ -1,5 +1,5 @@
 export default function Trains(){
     return<div>
-        Trains
+        Trains 
     </div>
 }

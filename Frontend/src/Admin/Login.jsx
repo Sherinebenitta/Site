@@ -10,7 +10,7 @@ export default function Admin(){
 
     const postadmin = ()=>{
         axiosinstance.post('http://localhost:8000/login-admin',{AdminId,Password}).then(res=>{
-            navigate('/Train')
+            navigate('/Entryadmin')
             axiosinstance.defaults.headers['createtoken'] = res.data?.createtoken;
             localStorage.setItem('Admin',res.data?.createtoken);
             axiosinstance.defaults.headers['Admin'] = res.data?.Admin;

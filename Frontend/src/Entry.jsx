@@ -10,6 +10,9 @@ import axiosinstance from "./axiosInstance/axiosinstance";
 import { useEffect } from "react";
 import Profile from "./Profile/Profile";
 import Trains from "./Trains/Trains";
+import Entryadmin from "./Entrypage/Entrypageadmin";
+import Seat from "./Seat/seat";
+import Station from "./Station/Station";
 
 export default function Entry(){
     const navigate = useNavigate();
@@ -25,7 +28,7 @@ export default function Entry(){
         }else if(Admin && adminid){
             axiosinstance.defaults.headers['createtoken'] = Admin
             axiosinstance.defaults.headers['Admin'] = Admin?._id
-            navigate('/Train')
+            navigate('/Entryadmin')
         }           
     }
     const Check = ()=>{
@@ -54,7 +57,11 @@ export default function Entry(){
         <Route path="/Profile" element={<Profile/>}/>
         </Route>
         <Route element={<CheckAdmin/>}>
+        <Route path="/Entryadmin" element={<Entryadmin/>}/>
         <Route path="/Train" element={<Trains/>}/>
+        <Route path="/Routes" element={<Routes/>}/>
+        <Route path="/Seat" element={<Seat/>}/>
+        <Route path="/Station" element={<Station/>}/>
         </Route>
         
     </Routes>
