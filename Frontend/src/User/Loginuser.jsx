@@ -11,7 +11,7 @@ export default function User(){
         axiosinstance.post('http://localhost:8000/login-user',{Username,Password}).then(res=>{
           navigate('/Ticket') 
           axiosinstance.defaults.headers['token'] = res.data?.token ;
-          localStorage.setItem('token',res.data?.token)
+          localStorage.setItem('User',res.data?.token)
           axiosinstance.defaults.headers['User'] = res.data?.User;
           localStorage.setItem('ID',res.data?.User?._id)
         })

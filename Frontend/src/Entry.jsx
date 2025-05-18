@@ -9,22 +9,34 @@ import { useNavigate } from "react-router-dom";
 import axiosinstance from "./axiosInstance/axiosinstance";
 import { useEffect } from "react";
 import Profile from "./Profile/Profile";
+import Trains from "./Trains/Trains";
 
 export default function Entry(){
     const navigate = useNavigate();
     const checkpoint = async()=>{
-        let token = await localStorage.getItem('token');
-        let id = await  localStorage.getItem('ID')
-        if(token && id){
-            axiosinstance.defaults.headers['token'] = token;
+        let User = await localStorage.getItem('User');
+        let id = await  localStorage.getItem('ID');
+        let Admin = await localStorage.getItem('Admin');
+        let adminid = await localStorage.getItem('ID')
+        if(User && id){
+            axiosinstance.defaults.headers['token'] = token; 
             axiosinstance.defaults.headers['User'] = User?._id
             navigate('/Ticket')
-        }
+        }else if(Admin && adminid){
+            axiosinstance.defaults.headers['createtoken'] = Admin
+            axiosinstance.defaults.headers['Admin'] = Admin?._id
+            navigate('/Train')
+        }           
     }
     const Check = ()=>{
-        let token = localStorage.getItem('token');
+        let token = localStorage.getItem('User');
         let id = localStorage.getItem('ID')
-        return token || id ? <Outlet/> : <Navigate to={'/'}/>
+        return token && id ? <Outlet/> : <Navigate to={'/'}/>
+    }
+    const CheckAdmin = ()=>{
+        let token = localStorage.getItem('Admin');
+        let id = localStorage.getItem('ID')
+        return token && id ? <Outlet/> : <Navigate to={'/'}/>
     }
 
     useEffect(()=>{
@@ -41,6 +53,10 @@ export default function Entry(){
         <Route path="/Ticket" element={<Ticket/>} />
         <Route path="/Profile" element={<Profile/>}/>
         </Route>
+        <Route element={<CheckAdmin/>}>
+        <Route path="/Train" element={<Trains/>}/>
+        </Route>
+        
     </Routes>
     </>
 }
