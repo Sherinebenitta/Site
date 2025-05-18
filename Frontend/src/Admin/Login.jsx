@@ -14,7 +14,7 @@ export default function Admin(){
             axiosinstance.defaults.headers['createtoken'] = res.data?.createtoken;
             localStorage.setItem('Admin',res.data?.createtoken);
             axiosinstance.defaults.headers['Admin'] = res.data?.Admin;
-            localStorage.setItem('ID',res.data?.Admin?._id)
+            localStorage.setItem('Admin_ID',res.data?.Admin?._id)
         })
     }
 

@@ -20,4 +20,10 @@ router.post("/login-user",async(req,res)=>{
     res.json({User:presentuser,token})
 })
 
+router.get("/getuser/:userid",async(req,res)=>{
+    const id = req.params.userid;
+    const getuser = await User.findById(id);
+    res.json(getuser)
+})
+
 module.exports = router;

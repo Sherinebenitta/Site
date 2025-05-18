@@ -17,9 +17,9 @@ export default function Entry(){
         let User = await localStorage.getItem('User');
         let id = await  localStorage.getItem('ID');
         let Admin = await localStorage.getItem('Admin');
-        let adminid = await localStorage.getItem('ID')
+        let adminid = await localStorage.getItem('Admin_ID')
         if(User && id){
-            axiosinstance.defaults.headers['token'] = token; 
+            axiosinstance.defaults.headers['token'] = User; 
             axiosinstance.defaults.headers['User'] = User?._id
             navigate('/Ticket')
         }else if(Admin && adminid){
@@ -35,7 +35,7 @@ export default function Entry(){
     }
     const CheckAdmin = ()=>{
         let token = localStorage.getItem('Admin');
-        let id = localStorage.getItem('ID')
+        let id = localStorage.getItem('Admin_ID')
         return token && id ? <Outlet/> : <Navigate to={'/'}/>
     }
 

@@ -22,7 +22,7 @@ export default function Login(){
     <input onChange={e=>{setusername(e.target.value)}} value={Username} placeholder="Enter username"/><br/><br/>
     <input onChange={e=>{setpassword(e.target.value)}} value={Password} placeholder="Enter password" type="password"/><br/><br/>
     <button>Sign-Up</button><br/>
-    <Link to={'/'}>Home</Link>
+    <Link to={'/User'}>Login</Link>
     </form>
     </>
 }
