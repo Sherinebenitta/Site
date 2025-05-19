@@ -6,7 +6,8 @@ export default function Login(){
     const [Username,setusername] = useState('')
     const [Password,setpassword] = useState('');
 
-    const newuser =()=>{ axiosinstance.post('http://localhost:8000/sign-in',{Username,Password}).then(res=>{
+    const newuser =()=>{ 
+        axiosinstance.post('http://localhost:8000/sign-in',{Username,Password}).then(res=>{
         
     })
 }
