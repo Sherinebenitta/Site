@@ -1,4 +1,4 @@
-export default function Routes(){
+export default function Routeway(){
     return <div>
         routes
     </div>

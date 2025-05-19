@@ -13,6 +13,7 @@ import Trains from "./Trains/Trains";
 import Entryadmin from "./Entrypage/Entrypageadmin";
 import Seat from "./Seat/seat";
 import Station from "./Station/Station";
+import Routeway from "./Routeway/Routeway";
 
 export default function Entry(){
     const navigate = useNavigate();
@@ -59,7 +60,7 @@ export default function Entry(){
         <Route element={<CheckAdmin/>}>
         <Route path="/Entryadmin" element={<Entryadmin/>}/>
         <Route path="/Train" element={<Trains/>}/>
-        <Route path="/Routes" element={<Routes/>}/>
+        <Route path="/Routes" element={<Routeway/>}/>
         <Route path="/Seat" element={<Seat/>}/>
         <Route path="/Station" element={<Station/>}/>
         </Route>
