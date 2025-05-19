@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import axiosinstance from "../axiosInstance/axiosinstance"
 import { useNavigate } from "react-router-dom"
-import axios from "axios"
+import '../../src/LoginPage.css'
 export default function User(){
     const [Username,setusername] = useState('')
     const [Password,setpassword] = useState('')
