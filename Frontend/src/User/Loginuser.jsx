@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import axiosinstance from "../axiosInstance/axiosinstance"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
-import '../style/'
 export default function User(){
     const [Username,setusername] = useState('')
     const [Password,setpassword] = useState('')
