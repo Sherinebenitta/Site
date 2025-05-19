@@ -3,6 +3,7 @@ import { Link } from "react-router-dom"
 import axiosinstance from "../axiosInstance/axiosinstance"
 import { useNavigate } from "react-router-dom"
 import axios from "axios"
+import '../style/'
 export default function User(){
     const [Username,setusername] = useState('')
     const [Password,setpassword] = useState('')
@@ -23,13 +24,13 @@ export default function User(){
         setusername('');
         setpassword('')
     }
-    return <>
-    <form onSubmit={onsubmit}>
+    return <div className="login-container">
+    <form onSubmit={onsubmit} className="login-form">
         <input onChange={e=>{setusername(e.target.value)}} value={Username} placeholder="Enter username"/><br/><br/>
         <input onChange={e=>{setpassword(e.target.value)}} value={Password} placeholder="Enter password" type="password"/><br/><br/>
         <button type="submit">Login</button>
         <p>New User</p>
         <Link to={'/Usersignin'}>Sign-Up</Link>
     </form>
-    </>
+    </div>
 }
