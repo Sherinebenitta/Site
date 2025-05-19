@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
 
 export default function Credentials(){
-    return<div>
-        <Link to={'/User'}>User</Link><br/><br/>
-        <Link to={'/Admin'}>Admin</Link>
-    
+    return<><div style={{
+        backgroundImage: 'url(/new.jpg)',
+        backgroundSize: 'cover',
+        height: '100vh',
+      }} className="text-center"
+    ><div className="p-4">
+        <Link to={'/User'}><button className="btn btn-primary btn-lg btn-block">USER ENTRY</button></Link><br/><br/>
+        <Link to={'/Admin'}><button className="btn btn-danger btn-lg btn-block">ADMIN ENTRY</button></Link>
     </div>
+    </div>
+    </>
 }
