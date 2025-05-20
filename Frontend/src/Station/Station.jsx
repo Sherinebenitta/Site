@@ -8,7 +8,7 @@ export default function Station(){
 
     const poststation = ()=>{
         axiosinstance.post('http://localhost:8000/station',{Name,Code,Location}).then(res=>{
-
+            
         })
     }
     const onsubmit = e=>{
