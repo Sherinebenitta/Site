@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
 
 const Routeschema = new mongoose.Schema({
-    Place:String,
-    Time:Date
+    Startpoint:String,
+    Destination:String
+    
 });
 
 const Routemodel = mongoose.model('Route',Routeschema);

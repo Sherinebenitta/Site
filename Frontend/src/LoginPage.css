@@ -4,7 +4,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to right, #4facfe, #00f2fe);
+  background-image: url('../public/train.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .login-form {
@@ -43,7 +45,7 @@
 }
 
 .login-form button:hover {
-  background-color: #00c6ff;
+  background-color: #dbe0e1;
 }
 
 .signup-link {

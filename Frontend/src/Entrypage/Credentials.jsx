@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Credentials(){
     return<><div style={{
-        backgroundImage: 'url(/train.jpg)',
+        backgroundImage: 'url(/lock.jpeg)',
         backgroundSize: 'cover',
         height: '100vh',
       }} className="text-center"
