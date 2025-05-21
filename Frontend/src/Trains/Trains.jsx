@@ -12,12 +12,11 @@ export default function Trains(){
     const [seatid,setseatid] = useState();
     const [stationid,setstationid] = useState()
 
-    const onsubmit = e=>{
-        e.preventDefault();
-        console.log(Routeid)
-        
-    }
+    const posttrain = ()=>{
+        axiosinstance.post('http://localhost:8000/train',{TrainName,TrainCode,DateAvaliable,JourneyTime,Route_id:Routeid,Seat_id:seatid,Station_id:stationid}).then(res=>{
 
+        })
+    }
     const getroute = ()=>{
         axiosinstance.get('http://localhost:8000/getroute').then(res=>{
             setroute(res.data)
@@ -40,6 +39,19 @@ export default function Trains(){
         getseat();
         getstation();
     },[])
+
+    const onsubmit = e=>{
+        e.preventDefault(); 
+        posttrain();  
+        settrain('')  
+        setcode('')
+        setdate('')
+        settime('')
+        setrouteid('')
+        setseatid('')
+        setstationid('')
+    }
+
     return<div>
         <form onSubmit={onsubmit}>
             <label>Train</label>
@@ -56,13 +68,13 @@ export default function Trains(){
                 Routesway.map((way)=><option key={way?._id} value={way?._id}>{way.Routeway}</option>)
             }
             </select><br/><br/>
-            <select>
+            <select onChange={e=>{setseatid(e.target.value)}} value={seatid}>
             <option>Select Seat</option>
             {
                 Seats.map((seat)=><option key={seat?._id} value={seat?._id}>{seat.Seat_class}</option>)
             }
             </select><br/><br/>
-            <select>
+            <select onChange={e=>{setstationid(e.target.value)}} value={stationid}>
             <option>Select Station</option>
             {
                 station.map((station)=><option key={station?._id} value={station?._id}>{station.Name}</option>)
