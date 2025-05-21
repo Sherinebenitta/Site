@@ -9,7 +9,6 @@ export default function Profile(){
     const logout = ()=>{
         localStorage.clear();
         navigate('/')
-        
     }
 
     const getuser = ()=>{

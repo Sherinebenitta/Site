@@ -8,6 +8,10 @@ router.post('/seat',async(req,res)=>{
     if(presentseat) return res.status(500).send("Seat class already added");
     const createseat = await Seat.create(seat);
     res.json(createseat);
-})
+});
 
-module.exports = router
+router.get('/getseat',async(req,res)=>{
+    const getseat = await Seat.find();
+    res.json(getseat)
+})
+module.exports = router;

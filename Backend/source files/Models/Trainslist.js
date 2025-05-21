@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const Trainschema = new mongoose.Schema({
     TrainName:String,
     TrainCode:Number,
-    Date:Date,
+    DateAvaliable:Date,
     JourneyTime:{
     type: String,
     required: true,
