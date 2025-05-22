@@ -9,6 +9,12 @@ router.post('/book',generatetoken,async(req,res)=>{
     if(presentticket) return res.status(500).send("Ticket already booked");
     const createticket = await Booking.create(ticket);
     res.json(createticket)
+});
+
+router.get('/getbooking/:userid',async(req,res)=>{
+    const user_id = req.params.userid;
+    const getticket = await Booking.find({User_id:user_id})
+    res.json(getticket)
 })
 
 module.exports = router

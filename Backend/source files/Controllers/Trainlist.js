@@ -10,10 +10,13 @@ router.post('/train',check,async(req,res)=>{
     const createtrain = await Train.create(train);
     res.json(createtrain)
 });
-
-router.get('/gettrain/:route_id',async(req,res)=>{
-    const route_id = req.params.route_id
-    const gettrain = await Train.find({route_id}).populate('Route_id')
+router.get('/gettrain',async(req,res)=>{
+    const gettrain = await Train.find()
+    res.json(gettrain)
+})
+router.get('/gettrain/:routeid',async(req,res)=>{
+    const route_id = req.params.routeid
+    const gettrain = await Train.find({Route_id:route_id})
     res.json(gettrain)
 })
 
