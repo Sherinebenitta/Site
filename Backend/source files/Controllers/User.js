@@ -6,7 +6,9 @@ const webtoken = require('jsonwebtoken')
 router.post("/sign-in",async(req,res)=>{
     const user = req.body
     const presentuser = await User.findOne({Username:user?.Username})
+    const presentpass = await User.findOne({Password:user?.Password})
     if(presentuser) return res.status(409).send("User Already Present")
+    else if(presentpass) return res.status(409).send("Password invalid")
     const createuser = await User.create(user)
     res.json(createuser)
 });

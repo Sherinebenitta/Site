@@ -1,0 +1,48 @@
+Reset default margins and paddings
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Ensure the body and html elements take up the full height */
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+/* Background image styling */
+.bg {
+    background-image: url('../../public/entry.avif'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for the login container */
+.login-container {
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 10px;
+    border-radius: 8px;
+    width: 300px;
+    height: 100vh;
+    text-align: center;
+    color: white;
+}
+
+
+
+button {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

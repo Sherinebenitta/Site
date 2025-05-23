@@ -13,7 +13,7 @@ router.post('/book',generatetoken,async(req,res)=>{
 
 router.get('/getbooking/:userid',async(req,res)=>{
     const user_id = req.params.userid;
-    const getticket = await Booking.find({User_id:user_id})
+    const getticket = await Booking.find({User_id:user_id}).populate('Train_id')
     res.json(getticket)
 })
 

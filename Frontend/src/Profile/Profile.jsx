@@ -32,14 +32,14 @@ export default function Profile(){
         <div className="container-fluid"> 
         <div className="row">  
             <div className="col-12 text-end">  
-        <button onClick={logout} className="pull-left">Logout</button>
+        <button onClick={logout}>Logout</button>
         </div>
     </div>
     </div>  
     <ul>
             {
                 train.map((tr)=><li key={tr._id} value={tr._id}>
-                    {tr.PassengerName}
+                    {tr.PassengerName} booked tickets for {tr.Members} Members in {tr?.Train_id?.TrainName} on {tr?.Train_id?.DateAvaliable} at {tr?.Train_id?.JourneyTime}
                 </li>)
             }
         </ul>    
