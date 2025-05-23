@@ -27,9 +27,9 @@ export default function User(){
     <form onSubmit={onsubmit} className="login-form">
         <input onChange={e=>{setusername(e.target.value)}} value={Username} placeholder="Enter username"/><br/><br/>
         <input onChange={e=>{setpassword(e.target.value)}} value={Password} placeholder="Enter password" type="password"/><br/><br/>
-        <button type="submit">Login</button>
-        <p>New User</p>
-        <Link to={'/Usersignin'}>Sign-Up</Link>
+        <button type="submit">Login</button><br/><br/>
+        <b><p className="text-white">Become a Member</p></b>
+        <Link to={'/Usersignin'} class="signup-link a">SIGN-UP</Link>
     </form>
     </div>
 }

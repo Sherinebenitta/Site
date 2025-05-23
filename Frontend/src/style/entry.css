@@ -1,48 +1,72 @@
-Reset default margins and paddings
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+      box-sizing: border-box;
+      
+    }
 
-/* Ensure the body and html elements take up the full height */
-html, body {
-    height: 100%;
-    font-family: Arial, sans-serif;
-}
+.container {
+      display: flex;
+      min-height: 100vh;
+      border-width: 0;
+    }
 
-/* Background image styling */
-.bg {
-    background-image: url('../../public/entry.avif'); /* Replace with your image path */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.form-section {
+      flex: 1;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+.form-section h2 {
+      margin-bottom: 20px;
+      font-size: 32px;
+      color: #333;
+    }
 
-/* Styling for the login container */
-.login-container {
-    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    padding: 10px;
-    border-radius: 8px;
-    width: 300px;
-    height: 100vh;
-    text-align: center;
-    color: white;
-}
+    .form-group {
+      margin-bottom: 20px;
+    }
 
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
 
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #f3f1f1;
+      border-radius: 4px;
+    }
 
-button {
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-}
+    .form-group button {
+      width: 100%;
+      padding: 12px;
+      background-color: #607c7c;
+      border: none;
+      color: white;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-button:hover {
-    background-color: #0056b3;
-}
+    .form-group button:hover {
+      background-color: #45a049;
+    }
+
+    .image-section {
+      flex: 1;
+      background: url('../../public/YTR.avif');
+    }
+
+    @media (max-width: 770px) {
+      .container {
+        flex-direction: column;
+        
+      }
+
+      .image-section {
+        height: 300px;
+        width:fit-content;
+      }
+    }

@@ -4,13 +4,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('../public/train.jpg');
+  background-image: url('../public/train.avif');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 .login-form {
-  background-color: #ffffff;
   padding: 40px;
   border-radius: 8px;
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
@@ -35,10 +34,9 @@
 .login-form button {
   width: 100%;
   padding: 12px;
-  background-color: #030608;
+  background-color: #8e9ca8;
   border: none;
   border-radius: 4px;
-  color: white;
   font-size: 16px;
   cursor: pointer;
   margin-top: 10px;
@@ -55,4 +53,26 @@
 .signup-link a {
   color: #4facfe;
   text-decoration: none;
+
+}
+.realtime-button {
+  background-color: #7a8b9c;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+  transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.realtime-button:hover {
+  background-color: #4729296c;
+  box-shadow: 0 6px 16px rgba(0, 86, 210, 0.3);
+}
+
+.realtime-button:active {
+  transform: scale(0.98);
+  box-shadow: 0 3px 10px rgba(0, 86, 210, 0.2);
 }

@@ -1,9 +1,18 @@
 const mongoose = require('mongoose');
 
 const Bookschema =  new mongoose.Schema({
-    PassengerName:String,
-    Age:Number,
-    Members:Number,
+    PassengerName:{
+        type:String,
+        required:true
+    },
+    Age:{
+        type:Number,
+        required:true
+    },
+    Members:{
+        type:Number,
+        required:true
+    },
     Train_id:{
         ref:"Trains",
         type:mongoose.Schema.Types.ObjectId
