@@ -6,7 +6,6 @@
 .container {
       display: flex;
       min-height: 100vh;
-      border-width: 0;
     }
 
 .form-section {
@@ -35,7 +34,7 @@
     .form-group input {
       width: 100%;
       padding: 12px;
-      border: 1px solid #f3f1f1;
+      border: 1px solid #695f5f;
       border-radius: 4px;
     }
 
@@ -59,14 +58,22 @@
       background: url('../../public/YTR.avif');
     }
 
+    .image-section_second {
+      flex: 1;
+      background: url('../../public/admin.avif');
+    }
+
     @media (max-width: 770px) {
       .container {
         flex-direction: column;
-        
+
       }
 
       .image-section {
         height: 300px;
-        width:fit-content;
+        
+      }
+      .image-section_second {
+        height: 300px;
       }
     }

@@ -8,6 +8,15 @@
   background-repeat: no-repeat;
   background-size: cover;
 }
+.login-container_second{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../public/admin.avif');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .login-form {
   padding: 40px;

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import axiosinstance from "../axiosInstance/axiosinstance";
 import { useNavigate } from "react-router-dom";
+import '../../src/style/LoginPage.css'
 
 export default function Admin(){
     const [AdminId,setadminid] = useState(0);
@@ -24,12 +25,12 @@ export default function Admin(){
         setadminid('');
         setpassword('')
     }
-    return <>
-    <form onSubmit={onsubmit}>
+    return <div className="login-container_second">
+    <form onSubmit={onsubmit} className="login-form">
         <input onChange={e=>{setadminid(e.target.value)}} value={AdminId} type="Number" placeholder="Enter AdminId" /><br/><br/>
         <input onChange={e=>{setpassword(e.target.value)}} value={Password} type="password" placeholder="Enter Password"/><br/><br/>
         <button type="submit">Login</button><br/><br/>
         <Link to={'/Adminsign'}>New Admin</Link>
     </form>
-    </>
+    </div>
 }
