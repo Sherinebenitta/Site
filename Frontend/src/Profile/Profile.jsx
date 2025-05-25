@@ -1,6 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axiosinstance from "../axiosInstance/axiosinstance";
 import { useEffect, useState } from "react";
+import '../../src/style/LoginPage.css'
 
 export default function Profile(){
     const navigate = useNavigate();
@@ -27,22 +28,21 @@ export default function Profile(){
         getuser()
         getticket()
     },[])
-    return <div>
-        <b><p className="text-center">Welcome {user.Username}</p></b>  
-        <div className="container-fluid"> 
-        <div className="row">  
-            <div className="col-12 text-end">  
-        <button onClick={logout}>Logout</button>
-        </div>
-    </div>
-    </div>  
-    <ul>
-            {
-                train.map((tr)=><li key={tr._id} value={tr._id}>
-                    {tr.PassengerName} booked tickets for {tr.Members} Members in {tr?.Train_id?.TrainName} on {tr?.Train_id?.DateAvaliable} at {tr?.Train_id?.JourneyTime}
-                </li>)
-            }
-        </ul>    
-        
-    </div>
+    return <><div class='login-container_profile'>
+        <Link class='top-right-link' onClick={logout}>Logout</Link>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Your bookings {user?.Username}</th>
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            {train.map((tr) => <b><tr key={tr._id} value={tr._id}>
+                {tr.PassengerName} booked tickets for {tr.Members} Members in {tr?.Train_id?.TrainName} on {tr?.Train_id?.DateAvaliable} at {tr?.Train_id?.JourneyTime}
+            </tr></b>)}
+            </tr>
+            </tbody>
+        </table>
+        </div></>    
 }

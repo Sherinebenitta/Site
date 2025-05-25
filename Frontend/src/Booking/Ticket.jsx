@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axiosinstance from '../axiosInstance/axiosinstance'
 import { useEffect } from "react";
+import '../../src/style/LoginPage.css'
 
 export default function Ticket(){
     const [PassengerName,setname] = useState('');
@@ -11,6 +12,7 @@ export default function Ticket(){
     const [Trainlist,settrain] = useState([]);
     const [Route,setroute] = useState([])
     const [routeid,setrouteid] = useState()
+    const navigate = useNavigate()
     const User_id = localStorage.getItem('ID')
 
 
@@ -33,7 +35,9 @@ export default function Ticket(){
     }
 
     const onsubmit = e=>{
-        postticket()
+        postticket();
+        navigate('/pay')
+
     }
 
     useEffect(()=>{
@@ -41,14 +45,10 @@ export default function Ticket(){
     },[])
     
     return<> 
-    <div className="container-fluid"> 
-        <div className="row">  
-            <div className="col-12 text-end">  
-        <Link to={'/Profile'}>MyAccount</Link>
-        </div>
-    </div>
-    </div>
-    <form onSubmit={onsubmit}>
+    <div class="login-container_booking">
+        <div class="login-form">
+            <Link to={'/Profile'} class='top-right-link'>MyAccount</Link>
+        <form onSubmit={onsubmit}>
         <label>Passenger Name</label>
         <input placeholder="Enter name" onChange={e=>{setname(e.target.value)}} value={PassengerName} /><br/><br/>
         <label>Age</label>
@@ -81,5 +81,7 @@ export default function Ticket(){
         <p></p>        
         <button type="submit">Book Ticket</button>
     </form>
+    </div>
+    </div>
     </>
 }

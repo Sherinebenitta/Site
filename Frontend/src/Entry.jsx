@@ -14,6 +14,8 @@ import Entryadmin from "./Entrypage/Entrypageadmin";
 import Seat from "./Seat/seat";
 import Station from "./Station/Station";
 import Routeway from "./Routeway/Routeway";
+import Payment from "./payment/pay";
+import Headers from './Headers'
 
 export default function Entry(){
     const navigate = useNavigate();
@@ -46,7 +48,7 @@ export default function Entry(){
     useEffect(()=>{
         checkpoint();
     },[])
-    return<>
+    return<><Headers/>
     <Routes>
         <Route path="/" element={<Credentials/>}/>
         <Route path="/User" element={<User/>} />
@@ -55,6 +57,7 @@ export default function Entry(){
         <Route path="/Adminsign" element={<Adminsign/>} />
         <Route element={<Check/>}>
         <Route path="/Ticket" element={<Ticket/>} />
+        <Route path="/pay" element={<Payment/>}/>
         <Route path="/Profile" element={<Profile/>}/>
         </Route>
         <Route element={<CheckAdmin/>}>

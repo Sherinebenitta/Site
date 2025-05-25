@@ -29,9 +29,9 @@ export default function Adminsign(){
         <div className="col-md-6 mt-5" style={{textAlign:"center"}}>
         <h2>ADMIN SIGN UP</h2>
         <form onSubmit={onsubmit} className="mt-5" class="login-form">
-            <label>ADMIN ID</label>
+            <label style={{color:"black"}}>ADMIN ID</label>
             <input class="login-form input" onChange={e=>{setadminid(e.target.value)}} value={AdminId} type="Number" placeholder="Enter AdminId" /><br/><br/>
-            <label>PASSWORD</label>
+            <label style={{color:"black"}}>PASSWORD</label>
             <input class="login-form input" onChange={e=>{setpassword(e.target.value)}} value={Password} type="password" placeholder="Enter Password"/><br/><br/>
             <button type="submit">SIGN-UP</button><br/><br/>
         </form>

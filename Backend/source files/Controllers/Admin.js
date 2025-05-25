@@ -18,5 +18,11 @@ router.post("/login-admin",async(req,res)=>{
     if(presentadmin?.Password != admin?.Password) return res.status(401).send("Invalid Password");
     const createtoken = await webtoken.sign({Admin:presentadmin},'Admin');
     res.json({Admin:presentadmin,createtoken})
+});
+
+router.get('/getadmin/:adminid',async(req,res)=>{
+    const id = req.params.adminid;
+    const getadmin = await Admin.findById(id)
+    res.json(getadmin)
 })
 module.exports = router;

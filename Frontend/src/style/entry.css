@@ -63,6 +63,7 @@
       background: url('../../public/admin.avif');
     }
 
+
     @media (max-width: 770px) {
       .container {
         flex-direction: column;
@@ -75,5 +76,57 @@
       }
       .image-section_second {
         height: 300px;
+      }
+
+    }
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Sidebar styles */
+    .sidebar {
+      height: 100vh;
+      width: 200px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #343a40;
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      color: rgb(125, 168, 182);
+      display: block;
+      padding: 15px;
+      text-decoration: none;
+    }
+
+    .sidebar a:hover {
+      background-color: #495057;
+    }
+
+    /* Main content */
+    .content {
+      height: 100vh;
+      justify-content: center;
+      align-items: center;
+      background-image: url('../public/adminin.avif');
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    /* Navbar override */
+    .navbar {
+      z-index: 1031;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+      .content {
+        margin-left: 0;
       }
     }
