@@ -6,6 +6,8 @@ const Trainschema = new mongoose.Schema({
         required:true
     },
     TrainCode:{
+        min:3,
+        max:3,
         type:Number,
         required:true
     },

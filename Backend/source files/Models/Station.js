@@ -6,6 +6,8 @@ const Stationschema = new mongoose.Schema({
         required:true
     },
     Code:{
+        min:3,
+        max:3,
         type:Number,
         required:true
     },
