@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 const Adminschema =  new mongoose.Schema({
     AdminId:{
         type:Number,
-        min:3,
-        max:3,
+        min:6,
+        max:6,
         required:true
     },
     Password:{
