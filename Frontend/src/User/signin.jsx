@@ -28,9 +28,9 @@ export default function Login(){
     <form onSubmit={onsubmit} className="mt-5" class="login-form">
     <h4>USER SIGN-UP</h4>
     <label style={{color:"black"}}>Username</label>
-    <input class="login-form input " onChange={e=>{setusername(e.target.value)}} value={Username} placeholder="Enter username"/><br/><br/>
+    <input class="login-form input " onChange={e=>{setusername(e.target.value)}} value={Username} placeholder="Enter username" required/><br/><br/>
     <label style={{color:"black"}}>Password</label>
-    <input class="login-form input " onChange={e=>{setpassword(e.target.value)}} value={Password} placeholder="Enter password" type="password"/><br/><br/>
+    <input class="login-form input " onChange={e=>{setpassword(e.target.value)}} value={Password} placeholder="Enter password" type="password" required/><br/><br/>
     <button>Sign-Up</button><br/>
     </form>
     </div>

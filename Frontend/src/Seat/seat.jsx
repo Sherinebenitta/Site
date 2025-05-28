@@ -28,11 +28,11 @@ export default function Seat(){
         <div class="login-form">
         <form onSubmit={onsubmit}>
             <b><label>Seat class</label></b>
-            <input onChange={e=>{setseat(e.target.value)}} value={Seat_class} /><br/><br/>
+            <input onChange={e=>{setseat(e.target.value)}} value={Seat_class} required /><br/><br/>
             <b><label>Code</label></b>
-            <input onChange={e=>{const val = e.target.value; if (/^\d{0,3}$/.test(val)) {setcode(val);}}} min={'0'} value={Code} type="Number" /><br/><br/>
+            <input onChange={e=>{const val = e.target.value; if (/^\d{0,3}$/.test(val)) {setcode(val);}}} min={'0'} value={Code} type="Number" required /><br/><br/>
             <b><label>No of seats</label></b>
-            <input onChange={e=>{const val = e.target.value; if (/^\d{0,2}$/.test(val)) {setnumber(val);}}} min={'0'} value={SeatNumbers} type="Number"/><br/><br/>
+            <input onChange={e=>{const val = e.target.value; if (/^\d{0,2}$/.test(val)) {setnumber(val);}}} min={'0'} value={SeatNumbers} type="Number" required/><br/><br/>
             <button type="submit">Add Seats</button>
         </form>
         </div>

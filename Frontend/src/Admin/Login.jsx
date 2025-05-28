@@ -27,8 +27,8 @@ export default function Admin(){
     }
     return <div className="login-container_second">
     <form onSubmit={onsubmit} className="login-form">
-        <input onChange={e=>{const val = e.target.value; if (/^\d{0,6}$/.test(val)) {setadminid(val);}}} min={'0'} value={AdminId} type="Number" placeholder="Enter AdminId" /><br/><br/>
-        <input onChange={e=>{setpassword(e.target.value)}}  value={Password} type="password" placeholder="Enter Password"/><br/><br/>
+        <input onChange={e=>{const val = e.target.value; if (/^\d{0,6}$/.test(val)) {setadminid(val);}}} min={'0'} value={AdminId} type="Number" placeholder="Enter AdminId" required/><br/><br/>
+        <input onChange={e=>{setpassword(e.target.value)}}  value={Password} type="password" placeholder="Enter Password" required/><br/><br/>
         <button type="submit">Login</button><br/><br/>
         <Link to={'/Adminsign'}>New Admin</Link>
     </form>

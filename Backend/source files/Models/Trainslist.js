@@ -10,7 +10,8 @@ const Trainschema = new mongoose.Schema({
         required:true
     },
     DateAvaliable:{
-        type:Date,
+        type:String,
+        match: /^\d{4}-\d{2}-\d{2}$/,
         required:true
     },
     JourneyTime:{

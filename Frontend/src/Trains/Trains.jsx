@@ -61,13 +61,13 @@ export default function Trains(){
         <div class="login-form">
         <form onSubmit={onsubmit}>
             <label>Train</label>
-            <input placeholder="Train name" value={TrainName} onChange={e=>{settrain(e.target.value)}} /><br/><br/>
+            <input placeholder="Train name" value={TrainName} onChange={e=>{settrain(e.target.value)}} required /><br/><br/>
             <label>Code</label>
-            <input type="Number" value={TrainCode} onChange={e=>{const val = e.target.value; if (/^\d{0,3}$/.test(val)) {setcode(val);}}} min={'0'} placeholder="Train code" /><br/><br/>
+            <input type="Number" value={TrainCode} onChange={e=>{const val = e.target.value; if (/^\d{0,3}$/.test(val)) {setcode(val);}}} min={'0'} placeholder="Train code" required /><br/><br/>
             <label>Date</label>
-            <input type="date" value={DateAvaliable} onChange={e=>{setdate(e.target.value)}} /><br/><br/>
+            <input type="date" value={DateAvaliable} onChange={e=>{setdate(e.target.value)}} required /><br/><br/>
             <label>Time</label>
-            <input type="time" onChange={e=>{settime(e.target.value)}} value={JourneyTime} /><br/><br/>
+            <input type="time" onChange={e=>{settime(e.target.value)}} value={JourneyTime} required /><br/><br/>
             <label>Select Route</label>
             <select onChange={e=>{setrouteid(e.target.value)}} value={Routeid}>
             <option>Select</option>
@@ -76,14 +76,14 @@ export default function Trains(){
             }
             </select><br/><br/>
             <label>Select Seat</label>
-            <select onChange={e=>{setseatid(e.target.value)}} value={seatid}>
+            <select onChange={e=>{setseatid(e.target.value)}} value={seatid} required>
             <option>Select</option>
             {
                 Seats.map((seat)=><option key={seat?._id} value={seat?._id}>{seat.Seat_class}</option>)
             }
             </select><br/><br/>
             <label>Select Station</label>
-            <select onChange={e=>{setstationid(e.target.value)}} value={stationid}>
+            <select onChange={e=>{setstationid(e.target.value)}} value={stationid} required>
             <option>Select</option>
             {
                 station.map((station)=><option key={station?._id} value={station?._id}>{station.Name}</option>)

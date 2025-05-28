@@ -50,17 +50,17 @@ export default function Ticket(){
             <Link to={'/Profile'} class='top-right-link'>MyAccount</Link>
         <form onSubmit={onsubmit}>
         <label>Passenger Name</label>
-        <input placeholder="Enter name" onChange={e=>{setname(e.target.value)}} value={PassengerName} /><br/><br/>
+        <input placeholder="Enter name" onChange={e=>{setname(e.target.value)}} value={PassengerName} required /><br/><br/>
         <label>Age</label>
-        <input type="Number" placeholder="Enter Age" onChange={e=>{const val = e.target.value; if (/^\d{0,2}$/.test(val)) {setage(val);}}} min={'0'} value={Age}/><br/><br/>
+        <input type="Number" placeholder="Enter Age" onChange={e=>{const val = e.target.value; if (/^\d{0,2}$/.test(val)) {setage(val);}}} min={'0'} value={Age} required/><br/><br/>
         <label>No of Members</label>
-        <input type="Number" placeholder="Enter No" onChange={e=>{const val = e.target.value; if (/^\d{0,2}$/.test(val)) {setmember(val);}}} min={'0'} value={Members}/><br/><br/>
+        <input type="Number" placeholder="Enter No" onChange={e=>{const val = e.target.value; if (/^\d{0,2}$/.test(val)) {setmember(val);}}} min={'0'} value={Members} required/><br/><br/>
         <label>Select Route</label>
         <select onChange={e=>{
 
             setrouteid(e.target.value)
             gettrain(e.target.value)
-            }} value={routeid}>
+            }} value={routeid} required>
             <option>Select Route</option>
             {
                 Route.map((rot)=><option key={rot._id} value={rot._id}>
@@ -69,7 +69,7 @@ export default function Ticket(){
             }
         </select><br/><br/>
         <label>Date of Journey</label>
-        <select onChange={e=>{settrain_id(e.target.value)}} value={Train_id}>
+        <select onChange={e=>{settrain_id(e.target.value)}} value={Train_id} required>
             <option>Select Train</option>
             {
                 Trainlist.map((trn)=><option key={trn?._id} value={trn?._id}>

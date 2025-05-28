@@ -27,11 +27,11 @@ export default function Station(){
         <div class="login-form">
         <form onSubmit={onsubmit}>
             <label style={{color:"white"}}>Station</label>
-            <input onChange={e=>{setname(e.target.value)}} value={Name} placeholder="Station Name" /><br/><br/>
+            <input onChange={e=>{setname(e.target.value)}} value={Name} placeholder="Station Name" required/><br/><br/>
             <label style={{color:"white"}}>Station Code</label>
-            <input onChange={e=>{const val = e.target.value; if (/^\d{0,3}$/.test(val)) {setcode(val);}}} min={'0'} value={Code} placeholder="Code" /><br/><br/>
+            <input onChange={e=>{const val = e.target.value; if (/^\d{0,3}$/.test(val)) {setcode(val);}}} min={'0'} value={Code} placeholder="Code" required /><br/><br/>
             <label style={{color:"white"}}>Location</label>
-            <input onChange={e=>{setlocation(e.target.value)}} value={Location} placeholder="Location" /><br/><br/>
+            <input onChange={e=>{setlocation(e.target.value)}} value={Location} placeholder="Location" required /><br/><br/>
             <button type="submit">Add Station</button>
         </form>
         </div>

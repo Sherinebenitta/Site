@@ -3,6 +3,7 @@ import axiosinstance from "../axiosInstance/axiosinstance";
 import { useEffect, useState } from "react";
 import '../../src/style/LoginPage.css'
 import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import ReactPDF from '@react-pdf/renderer';
 
 const styles = StyleSheet.create({
   page: {
@@ -72,9 +73,9 @@ const MyDocument = () => (
             </tr>
             </tbody>
         </table>
-        </div>
+        </div>  
+        {/* <button className="btn btn-primary" onClick={()=>ReactPDF.render(<MyDocument />, `${__dirname}/example.pdf`)}>Download PDF</button> */}
         </>    
 }
 
-// <button className="btn btn-primary" onClick={()=>ReactPDF.render(<MyDocument />, `${__dirname}/example.pdf`)}>Download PDF</button>
 

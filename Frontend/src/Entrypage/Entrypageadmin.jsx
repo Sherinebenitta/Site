@@ -30,8 +30,7 @@ export default function Entryadmin(){
         <Link  to={'/Station'}>STATION</Link>                               
         <button onClick={logout} class="realtime-button">LOGOUT</button>
         </div>
-        <div class="content mt-5 pt-3">
-            <div className="image-section_admin"></div>
+        <div class="content">
             <h4 className='text-center'>WELCOME ADMIN {adminget?.AdminId} </h4>
         </div>
 </div>

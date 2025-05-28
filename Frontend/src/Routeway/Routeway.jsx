@@ -24,7 +24,7 @@ export default function Routeway(){
         <div class="login-form">
         <form onSubmit={onsubmit}>
             <label>Travel Route</label><br/>
-            <input onChange={e=>{setrouteway(e.target.value)}} value={Routeway} /><br/>
+            <input onChange={e=>{setrouteway(e.target.value)}} value={Routeway} required /><br/>
             <button>Add Routeway</button>
         </form>
         </div>

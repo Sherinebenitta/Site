@@ -30,9 +30,9 @@ export default function Adminsign(){
         <h2>ADMIN SIGN UP</h2>
         <form onSubmit={onsubmit} className="mt-5" class="login-form">
             <label style={{color:"black"}}>ADMIN ID</label>
-            <input class="login-form input" onChange={e=>{const val = e.target.value; if (/^\d{0,6}$/.test(val)) {setadminid(val);}}} min={'0'} value={AdminId} type="Number" placeholder="Enter AdminId" /><br/><br/>
+            <input class="login-form input" onChange={e=>{const val = e.target.value; if (/^\d{0,6}$/.test(val)) {setadminid(val);}}} min={'0'} value={AdminId} type="Number" placeholder="Enter AdminId" required /><br/><br/>
             <label style={{color:"black"}}>PASSWORD</label>
-            <input class="login-form input" onChange={e=>{setpassword(e.target.value)}} value={Password} type="password" placeholder="Enter Password"/><br/><br/>
+            <input class="login-form input" onChange={e=>{setpassword(e.target.value)}} value={Password} type="password" placeholder="Enter Password" required/><br/><br/>
             <button type="submit">SIGN-UP</button><br/><br/>
         </form>
         </div>
