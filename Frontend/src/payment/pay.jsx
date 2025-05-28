@@ -18,7 +18,7 @@ export default function Payment(){
         <div class="login-form">
         <form onSubmit={onsubmit}>
             <label>No of Members</label>
-            <input type="Number" onChange={e=>{setcalculate(e.target.value)}} value={calculate} required/><br/><br/>
+            <input type="Number" onChange={e=>{const val = e.target.value; if (/^\d{0,2}$/.test(val)) {setcalculate(val);}}} value={calculate} required/><br/><br/>
             <label>Total Amount</label>
             <input type="Number" value={calculate*240}/><br/><br/>
             <button>PAY</button>

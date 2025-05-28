@@ -63,7 +63,7 @@ export default function Trains(){
             <label>Train</label>
             <input placeholder="Train name" value={TrainName} onChange={e=>{settrain(e.target.value)}} /><br/><br/>
             <label>Code</label>
-            <input type="Number" value={TrainCode} onChange={e=>{setcode(e.target.value)}} placeholder="Train code" /><br/><br/>
+            <input type="Number" value={TrainCode} onChange={e=>{const val = e.target.value; if (/^\d{0,3}$/.test(val)) {setcode(val);}}} min={'0'} placeholder="Train code" /><br/><br/>
             <label>Date</label>
             <input type="date" value={DateAvaliable} onChange={e=>{setdate(e.target.value)}} /><br/><br/>
             <label>Time</label>

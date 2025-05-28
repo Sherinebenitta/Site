@@ -29,7 +29,7 @@ export default function Station(){
             <label style={{color:"white"}}>Station</label>
             <input onChange={e=>{setname(e.target.value)}} value={Name} placeholder="Station Name" /><br/><br/>
             <label style={{color:"white"}}>Station Code</label>
-            <input onChange={e=>{setcode(e.target.value)}} value={Code} placeholder="Code" /><br/><br/>
+            <input onChange={e=>{const val = e.target.value; if (/^\d{0,3}$/.test(val)) {setcode(val);}}} min={'0'} value={Code} placeholder="Code" /><br/><br/>
             <label style={{color:"white"}}>Location</label>
             <input onChange={e=>{setlocation(e.target.value)}} value={Location} placeholder="Location" /><br/><br/>
             <button type="submit">Add Station</button>

@@ -2,6 +2,19 @@ import { Link, useNavigate } from "react-router-dom";
 import axiosinstance from "../axiosInstance/axiosinstance";
 import { useEffect, useState } from "react";
 import '../../src/style/LoginPage.css'
+import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+
+const styles = StyleSheet.create({
+  page: {
+    flexDirection: 'row',
+    backgroundColor: '#E4E4E4'
+  },
+  section: {
+    margin: 10,
+    padding: 10,
+    flexGrow: 1
+  }
+});
 
 export default function Profile(){
     const navigate = useNavigate();
@@ -24,6 +37,21 @@ export default function Profile(){
             settrain(res.data)
         })
     }
+
+    
+const MyDocument = () => (
+  <Document>
+    <Page size="A4" style={styles.page}>
+      <View style={styles.section}>
+        <Text>Section #1</Text>
+      </View>
+      <View style={styles.section}>
+        <Text>Section #2</Text>
+      </View>
+    </Page>
+  </Document>
+);
+
     useEffect(()=>{
         getuser()
         getticket()
@@ -44,5 +72,9 @@ export default function Profile(){
             </tr>
             </tbody>
         </table>
-        </div></>    
+        </div>
+        </>    
 }
+
+// <button className="btn btn-primary" onClick={()=>ReactPDF.render(<MyDocument />, `${__dirname}/example.pdf`)}>Download PDF</button>
+

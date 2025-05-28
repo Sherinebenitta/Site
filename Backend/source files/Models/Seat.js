@@ -7,8 +7,6 @@ const Seatschema = new mongoose.Schema({
     },
     Code:{
         type:Number,
-        min:3,
-        max:3,
         required:true
     },
     SeatNumbers:{

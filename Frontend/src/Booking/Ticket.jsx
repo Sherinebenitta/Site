@@ -52,9 +52,9 @@ export default function Ticket(){
         <label>Passenger Name</label>
         <input placeholder="Enter name" onChange={e=>{setname(e.target.value)}} value={PassengerName} /><br/><br/>
         <label>Age</label>
-        <input type="Number" placeholder="Enter Age" onChange={e=>{setage(e.target.value)}} value={Age}/><br/><br/>
+        <input type="Number" placeholder="Enter Age" onChange={e=>{const val = e.target.value; if (/^\d{0,2}$/.test(val)) {setage(val);}}} min={'0'} value={Age}/><br/><br/>
         <label>No of Members</label>
-        <input type="Number" placeholder="Enter No" onChange={e=>{setmember(e.target.value)}} value={Members}/><br/><br/>
+        <input type="Number" placeholder="Enter No" onChange={e=>{const val = e.target.value; if (/^\d{0,2}$/.test(val)) {setmember(val);}}} min={'0'} value={Members}/><br/><br/>
         <label>Select Route</label>
         <select onChange={e=>{
 

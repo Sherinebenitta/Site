@@ -91,9 +91,8 @@
   max-width: 400px;
   text-align: center;
 }
-
 .login-form label {
-  color: #0f0f0f;
+  color: #f3eeee;
 }
 .top-right-link {
     position: absolute;

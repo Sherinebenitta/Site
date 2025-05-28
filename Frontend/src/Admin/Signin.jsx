@@ -5,7 +5,7 @@ import '../../src/style/LoginPage.css'
 import '../../src/style/entry.css'
 
 export default function Adminsign(){
-    const [AdminId,setadminid] = useState(0);
+    const [AdminId,setadminid] = useState();
     const [Password,setpassword] = useState('');
     const navigate = useNavigate()
 
@@ -30,7 +30,7 @@ export default function Adminsign(){
         <h2>ADMIN SIGN UP</h2>
         <form onSubmit={onsubmit} className="mt-5" class="login-form">
             <label style={{color:"black"}}>ADMIN ID</label>
-            <input class="login-form input" onChange={e=>{setadminid(e.target.value)}} value={AdminId} type="Number" placeholder="Enter AdminId" /><br/><br/>
+            <input class="login-form input" onChange={e=>{const val = e.target.value; if (/^\d{0,6}$/.test(val)) {setadminid(val);}}} min={'0'} value={AdminId} type="Number" placeholder="Enter AdminId" /><br/><br/>
             <label style={{color:"black"}}>PASSWORD</label>
             <input class="login-form input" onChange={e=>{setpassword(e.target.value)}} value={Password} type="password" placeholder="Enter Password"/><br/><br/>
             <button type="submit">SIGN-UP</button><br/><br/>
