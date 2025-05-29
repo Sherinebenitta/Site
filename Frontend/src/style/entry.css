@@ -87,9 +87,9 @@
     .sidebar {
       height: 100vh;
       width: 200px;
-      position: fixed;
+      position:fixed;
       background-color: #343a40;
-      padding-top: 60px;
+      padding-top: 50px;
     }
 
     .sidebar a {
@@ -105,12 +105,9 @@
 
     /* Main content */
     .content {
-      height: 89vh;
+      height: 100vh;
       justify-content: center;
       align-items: center;
-      background-image: url('../public/adminin.avif');
-      background-repeat: no-repeat;
-      background-size: cover;
     }
 
     /* Navbar override */

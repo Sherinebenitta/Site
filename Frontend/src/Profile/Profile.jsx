@@ -2,19 +2,43 @@ import { Link, useNavigate } from "react-router-dom";
 import axiosinstance from "../axiosInstance/axiosinstance";
 import { useEffect, useState } from "react";
 import '../../src/style/LoginPage.css'
-import { Page, Text, View, Document, StyleSheet } from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet,pdf } from '@react-pdf/renderer';
 import ReactPDF from '@react-pdf/renderer';
 
 const styles = StyleSheet.create({
   page: {
-    flexDirection: 'row',
-    backgroundColor: '#E4E4E4'
+    padding: 30,
+    fontSize: 12,
   },
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1
-  }
+  table: {
+    display: 'table',
+    width: 'auto',
+    borderWidth: 1,
+    borderColor: '#000',
+    borderStyle: 'solid',
+    marginTop: 10,
+  },
+  tableRow: {
+    flexDirection: 'row',
+  },
+  tableColHeader: {
+    width: '25%',
+    borderStyle: 'solid',
+    borderColor: '#000',
+    borderBottomWidth: 1,
+    backgroundColor: '#eee',
+    padding: 5,
+  },
+  tableCol: {
+    width: '25%',
+    borderStyle: 'solid',
+    borderColor: '#000',
+    borderBottomWidth: 1,
+    padding: 5,
+  },
+  tableCell: {
+    fontSize: 10,
+  },
 });
 
 export default function Profile(){
@@ -40,20 +64,37 @@ export default function Profile(){
     }
 
     
-const MyDocument = ({ content }) => (
+const MyPdfWithTable = ({ train }) => (
   <Document>
     <Page size="A4" style={styles.page}>
-      <Text>{content}</Text>
+      <Text>USER TRAIN DETAILS</Text>
+      <View style={styles.table}>
+        <View style={styles.tableRow}>
+          <View style={styles.tableColHeader}><Text style={styles.tableCell}>Username</Text></View>
+          <View style={styles.tableColHeader}><Text style={styles.tableCell}>Members</Text></View>
+          <View style={styles.tableColHeader}><Text style={styles.tableCell}>TrainName</Text></View>
+          <View style={styles.tableColHeader}><Text style={styles.tableCell}>Date</Text></View>
+          <View style={styles.tableColHeader}><Text style={styles.tableCell}>Time</Text></View>
+        </View>
+        {train.map((item, idx) => (
+          <View style={styles.tableRow} key={idx}>
+            <View style={styles.tableCol}><Text style={styles.tableCell}>{item.PassengerName}</Text></View>
+            <View style={styles.tableCol}><Text style={styles.tableCell}>{item.Members}</Text></View>
+            <View style={styles.tableCol}><Text style={styles.tableCell}>{item?.Train_id?.TrainName}</Text></View>
+            <View style={styles.tableCol}><Text style={styles.tableCell}>{item?.Train_id?.DateAvaliable}</Text></View>
+            <View style={styles.tableCol}><Text style={styles.tableCell}>{item?.Train_id?.JourneyTime}</Text></View>
+          </View>
+        ))}
+      </View>
     </Page>
   </Document>
 );
-
 const GeneratePDF = async () => {
-    const blob = await pdf(<MyDocument />).toBlob();
+    const blob = await pdf(<MyPdfWithTable data={train} />).toBlob();
  
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
-    link.download = 'example.pdf';
+    link.download = 'TrainDetails.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -65,6 +106,7 @@ const GeneratePDF = async () => {
     },[])
     return <><div class='login-container_profile'>
         <Link class='top-right-link' onClick={logout}>Logout</Link>
+        
     <table class="styled-table">
         <thead>
             <tr>
@@ -84,9 +126,10 @@ const GeneratePDF = async () => {
                 <td>{tr?.Train_id?.JourneyTime}</td>
             </tr>)}
             </tbody>
-        </table>
+            <button className="btn btn-primary text-center" onClick={GeneratePDF}>Download PDF</button>
+        </table><br/>
+        
         </div>  
-        { <button className="btn btn-primary" onClick={()=>ReactPDF.render(<GeneratePDF/>, `${__dirname}/example.pdf`)}>Download PDF</button> }
         </>    
 }
 

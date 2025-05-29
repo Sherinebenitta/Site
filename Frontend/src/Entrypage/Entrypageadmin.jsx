@@ -1,5 +1,6 @@
 import {Link,useNavigate} from 'react-router-dom'
 import axiosinstance from '../axiosInstance/axiosinstance'
+import '../../src/style/entry.css'
 import '../../src/style/LoginPage.css'
 import { useEffect, useState } from 'react'
 
@@ -28,8 +29,10 @@ export default function Entryadmin(){
         getadmin();
         gettrain();
     },[])
-    return <div>
-        <div class="sidebar">
+
+    return(
+        <div class='login-container_adminin'>
+        <div class="sidebar">  
         <h4 style={{color:'white'}}>MENU</h4>
         <Link to={'/Train'}>TRAIN</Link>
         <Link to={'/Routes'}>ROUTE</Link>
@@ -37,7 +40,7 @@ export default function Entryadmin(){
         <Link  to={'/Station'}>STATION</Link>                               
         <button onClick={logout} class="realtime-button">LOGOUT</button>
         </div>
-        <div class="content">
+        <div className='ml-4'>
             <h4 className='text-center'>WELCOME ADMIN {adminget?.AdminId} </h4>
             <table class="styled-table">
         <thead>
@@ -63,4 +66,5 @@ export default function Entryadmin(){
         </table>
         </div>
 </div>
+    )
 }
