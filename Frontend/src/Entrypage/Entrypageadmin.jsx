@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 export default function Entryadmin(){
     const navigate = useNavigate()
     const [adminget,setadmin] = useState([])
+    const [train,settrain] = useState([])
     const admin = localStorage.getItem('Admin_ID')
     const logout = ()=>{
         localStorage.clear();      
@@ -17,9 +18,15 @@ export default function Entryadmin(){
             setadmin(res.data)
         })
     }
+    const gettrain = ()=>{
+        axiosinstance.get('http://localhost:8000/gettrain').then(res=>{
+            settrain(res.data)
+        })
+    }
 
     useEffect(()=>{
         getadmin();
+        gettrain();
     },[])
     return <div>
         <div class="sidebar">
@@ -32,6 +39,28 @@ export default function Entryadmin(){
         </div>
         <div class="content">
             <h4 className='text-center'>WELCOME ADMIN {adminget?.AdminId} </h4>
+            <table class="styled-table">
+        <thead>
+            <tr>
+                <th>TrainName</th>
+                <th>TrainCode</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Route</th>
+                <th>Station</th>
+            </tr>
+        </thead>
+        <tbody>
+            {train.map((tr) =><tr key={tr._id} value={tr._id}>
+                <td>{tr.TrainName}</td>
+                <td>{tr.TrainCode}</td>
+                <td>{tr.DateAvaliable}</td>
+                <td>{tr.JourneyTime}</td>
+                <td>{tr?.Route_id?.Routeway}</td>
+                <td>{tr?.Station_id?.Name}</td>
+            </tr>)}
+            </tbody>
+        </table>
         </div>
 </div>
 }

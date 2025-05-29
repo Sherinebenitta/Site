@@ -86,7 +86,7 @@ export default function Trains(){
             <select onChange={e=>{setstationid(e.target.value)}} value={stationid} required>
             <option>Select</option>
             {
-                station.map((station)=><option key={station?._id} value={station?._id}>{station.Name}</option>)
+                station.map((station)=><option key={station?._id} value={station?._id}>{station.Name} at {station.Location}</option>)
             }
             </select><br/><br/>
             <button type="submit">Add Train</button>

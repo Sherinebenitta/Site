@@ -52,6 +52,16 @@ const MyDocument = () => (
     </Page>
   </Document>
 );
+const GeneratePDF = async () => {
+    const blob = await pdf(<MyDocument />).toBlob();
+ 
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'example.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
 
     useEffect(()=>{
         getuser()
@@ -62,19 +72,25 @@ const MyDocument = () => (
     <table class="styled-table">
         <thead>
             <tr>
-                <th>Your bookings {user?.Username}</th>
+                <th>Username</th>
+                <th>Members</th>
+                <th>TrainName</th>
+                <th>Date</th>
+                <th>Time</th>
             </tr>
         </thead>
         <tbody>
-        <tr>
-            {train.map((tr) => <b><tr key={tr._id} value={tr._id}>
-                {tr.PassengerName} booked tickets for {tr.Members} Members in {tr?.Train_id?.TrainName} on {tr?.Train_id?.DateAvaliable} at {tr?.Train_id?.JourneyTime}
-            </tr></b>)}
-            </tr>
+            {train.map((tr) =><tr key={tr._id} value={tr._id}>
+                <td>{tr.PassengerName}</td>
+                <td>{tr.Members}</td>
+                <td>{tr?.Train_id?.TrainName}</td>
+                <td>{tr?.Train_id?.DateAvaliable}</td>
+                <td>{tr?.Train_id?.JourneyTime}</td>
+            </tr>)}
             </tbody>
         </table>
         </div>  
-        {/* <button className="btn btn-primary" onClick={()=>ReactPDF.render(<MyDocument />, `${__dirname}/example.pdf`)}>Download PDF</button> */}
+        { <button className="btn btn-primary" onClick={()=>ReactPDF.render(<GeneratePDF/>, `${__dirname}/example.pdf`)}>Download PDF</button> }
         </>    
 }
 

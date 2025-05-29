@@ -11,7 +11,7 @@ router.post('/train',check,async(req,res)=>{
     res.json(createtrain)
 });
 router.get('/gettrain',async(req,res)=>{
-    const gettrain = await Train.find()
+    const gettrain = await Train.find().populate('Route_id').populate('Station_id')
     res.json(gettrain)
 })
 router.get('/gettrain/:routeid',async(req,res)=>{
