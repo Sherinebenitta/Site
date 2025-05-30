@@ -1,4 +1,5 @@
-import { Link, useNavigate } from "react-router-dom";
+import { data, Link, useNavigate } from "react-router-dom";
+import { useMemo } from "react";
 import axiosinstance from "../axiosInstance/axiosinstance";
 import { useEffect, useState } from "react";
 import '../../src/style/LoginPage.css'
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
     display: 'table',
     width: 'auto',
     borderWidth: 1,
-    borderColor: '#000',
+    borderColor: 'black',
     borderStyle: 'solid',
     marginTop: 10,
   },
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   tableColHeader: {
     width: '25%',
     borderStyle: 'solid',
-    borderColor: '#000',
+    borderColor: 'black',
     borderBottomWidth: 1,
     backgroundColor: '#eee',
     padding: 5,
@@ -32,7 +33,7 @@ const styles = StyleSheet.create({
   tableCol: {
     width: '25%',
     borderStyle: 'solid',
-    borderColor: '#000',
+    borderColor: 'black',
     borderBottomWidth: 1,
     padding: 5,
   },
@@ -64,10 +65,10 @@ export default function Profile(){
     }
 
     
-const MyPdfWithTable = ({ train }) => (
+const MyPdfWithTable = ({data}) => (
   <Document>
     <Page size="A4" style={styles.page}>
-      <Text>USER TRAIN DETAILS</Text>
+      <Text style={{textAlign:'center'}}>{user.Username}</Text>
       <View style={styles.table}>
         <View style={styles.tableRow}>
           <View style={styles.tableColHeader}><Text style={styles.tableCell}>Username</Text></View>
@@ -76,21 +77,22 @@ const MyPdfWithTable = ({ train }) => (
           <View style={styles.tableColHeader}><Text style={styles.tableCell}>Date</Text></View>
           <View style={styles.tableColHeader}><Text style={styles.tableCell}>Time</Text></View>
         </View>
-        {train.map((item, idx) => (
-          <View style={styles.tableRow} key={idx}>
+        <view>
+        {data.map((item, idx) =><View style={styles.tableRow} key={idx}>
             <View style={styles.tableCol}><Text style={styles.tableCell}>{item.PassengerName}</Text></View>
             <View style={styles.tableCol}><Text style={styles.tableCell}>{item.Members}</Text></View>
             <View style={styles.tableCol}><Text style={styles.tableCell}>{item?.Train_id?.TrainName}</Text></View>
             <View style={styles.tableCol}><Text style={styles.tableCell}>{item?.Train_id?.DateAvaliable}</Text></View>
             <View style={styles.tableCol}><Text style={styles.tableCell}>{item?.Train_id?.JourneyTime}</Text></View>
           </View>
-        ))}
+)}
+</view>
       </View>
     </Page>
   </Document>
 );
-const GeneratePDF = async () => {
-    const blob = await pdf(<MyPdfWithTable data={train} />).toBlob();
+const GeneratePDF = async ( data ) => {
+    const blob = await pdf(<MyPdfWithTable data={data}/>).toBlob();
  
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -118,7 +120,7 @@ const GeneratePDF = async () => {
             </tr>
         </thead>
         <tbody>
-            {train.map((tr) =><tr key={tr._id} value={tr._id}>
+            {train?.map((tr) =><tr key={tr._id} value={tr._id}>
                 <td>{tr.PassengerName}</td>
                 <td>{tr.Members}</td>
                 <td>{tr?.Train_id?.TrainName}</td>
@@ -126,10 +128,10 @@ const GeneratePDF = async () => {
                 <td>{tr?.Train_id?.JourneyTime}</td>
             </tr>)}
             </tbody>
-            <button className="btn btn-primary text-center" onClick={GeneratePDF}>Download PDF</button>
-        </table><br/>
-        
+        </table>
+        <button className="btn btn-primary text-center" onClick={()=>{GeneratePDF(train)}}>Download PDF</button>
         </div>  
+        
         </>    
 }
 
