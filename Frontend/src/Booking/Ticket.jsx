@@ -7,17 +7,20 @@ import '../../src/style/LoginPage.css'
 export default function Ticket(){
     const [PassengerName,setname] = useState('');
     const [Age,setage] = useState();
-    const [Members,setmember] = useState();
     const [Train_id,settrain_id] = useState()
     const [Trainlist,settrain] = useState([]);
     const [Route,setroute] = useState([])
     const [routeid,setrouteid] = useState()
+    const [count, setCount] = useState();
+    const [Members, setMembers] = useState([]);
+    const [Seat_id,setseat_id] = useState();
+    const [seat,setseat] = useState([])
     const navigate = useNavigate()
     const User_id = localStorage.getItem('ID')
 
 
     const postticket = ()=>{
-        axiosinstance.post('http://localhost:8000/book',{PassengerName,Age,Members,Train_id,User_id}).then(res=>{
+        axiosinstance.post('http://localhost:8000/book',{PassengerName,Age,Members,Train_id,User_id,Seat_id}).then(res=>{
 
         })
     }
@@ -27,17 +30,41 @@ export default function Ticket(){
             settrain(res.data)   
         })
     }
-
+    const getseat = (Trainid)=>{
+        axiosinstance.get(`http://localhost:8000/getseat/${Trainid}`).then(res=>{
+            setseat(res.data)   
+            console.log(res.data)
+        })
+    }
     const getroute = ()=>{
         axiosinstance.get('http://localhost:8000/getroute').then(res=>{
             setroute(res.data)
         })
     }
+    const handleCountChange = (e) => {
+        const value = parseInt(e.target.value, 10) || 0;
+        setCount(value);
+        const updatedMembers = [...Members];
+        if (value > updatedMembers.length) {
+          while (updatedMembers.length < value) {
+            updatedMembers.push('');
+          }
+        } else {
+          updatedMembers.length = value;
+        }
+        setMembers(updatedMembers);
+      };
+    
+      const handleMemberChange = (index, e) => {
+        const updated = [...Members];
+        updated[index] = e.target.value;
+        setMembers(updated);
+      };
+    
+      
 
     const onsubmit = e=>{
         postticket();
-        navigate('/pay')
-
     }
 
     useEffect(()=>{
@@ -54,7 +81,18 @@ export default function Ticket(){
         <label>Age</label>
         <input type="Number" placeholder="Enter Age" onChange={e=>{const val = e.target.value; if (/^\d{0,2}$/.test(val)) {setage(val);}}} min={'0'} value={Age} required/><br/><br/>
         <label>No of Members</label>
-        <input type="Number" placeholder="Enter No" onChange={e=>{const val = e.target.value; if (/^\d{0,2}$/.test(val)) {setmember(val);}}} min={'0'} value={Members} required/><br/><br/>
+        <input type="number" min={'0'} value={count} onChange={handleCountChange} placeholder="Enter member"/><br/><br/>
+        {Members.map((member, index) => (
+        <div key={index}>
+          <label>Member {index + 1}:</label>
+          <input
+            type="text"
+            value={member}
+            placeholder="Passenger Name"
+            onChange={(e) => handleMemberChange(index, e)}
+          />
+        </div>
+      ))}
         <label>Select Route</label>
         <select onChange={e=>{
 
@@ -69,17 +107,25 @@ export default function Ticket(){
             }
         </select><br/><br/>
         <label>Date of Journey</label>
-        <select onChange={e=>{settrain_id(e.target.value)}} value={Train_id} required>
+        <select onChange={e=>{settrain_id(e.target.value);getseat(e.target.value)}}  value={Train_id} required>
             <option>Select Train</option>
             {
                 Trainlist.map((trn)=><option key={trn?._id} value={trn?._id}>
                     {trn.TrainName} is avaliable on {trn.DateAvaliable} at {trn.JourneyTime}
                 </option>)
             }
-        </select><br/><br/>
-
+        </select><br/><br/>   
+        <label>Seat Availability</label>
+        <select onChange={e=>{setseat_id(e.target.value)}}  value={Seat_id} required>
+            <option>Select Seat</option>
+            {
+                seat.map((tn)=><option key={tn?._id} value={tn?._id}>
+                    {tn?.Seat_id?.Seat_class}
+                </option>)
+            }
+        </select><br/><br/>         
         <p></p>        
-        <button type="submit">Book Ticket</button>
+        {count > 0 && <Link to={'/pay'}><button type="submit">Book Ticket</button></Link>}
     </form>
     </div>
     </div>

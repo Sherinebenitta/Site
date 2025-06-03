@@ -17,4 +17,8 @@ router.get('/getbooking/:userid',async(req,res)=>{
     res.json(getticket)
 })
 
+router.get('/getticket',async(req,res)=>{
+    const ticket = await Booking.find().populate('Train_id')
+    res.json(ticket)
+})
 module.exports = router

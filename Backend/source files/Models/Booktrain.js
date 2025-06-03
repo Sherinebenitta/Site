@@ -10,8 +10,8 @@ const Bookschema =  new mongoose.Schema({
         required:true
     },
     Members:{
-        type:Number,
-        required:true
+        type:Array,
+        required:true,
     },
     Train_id:{
         ref:"Trains",
@@ -19,6 +19,10 @@ const Bookschema =  new mongoose.Schema({
     },
     User_id:{
         ref:"User",
+        type:mongoose.Schema.Types.ObjectId
+    },
+    Seat_id:{
+        ref:"Seat",
         type:mongoose.Schema.Types.ObjectId
     }
 

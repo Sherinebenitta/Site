@@ -17,6 +17,7 @@ import Routeway from "./Routeway/Routeway";
 import Payment from "./payment/pay";
 import Headers from './Headers'
 
+
 export default function Entry(){
     const navigate = useNavigate();
     const checkpoint = async()=>{

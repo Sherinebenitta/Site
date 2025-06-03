@@ -8,7 +8,7 @@ const Routemodel = require('./source files/Controllers/Route');
 const Seat = require('./source files/Controllers/Seats');
 const Station = require('./source files/Controllers/Station');
 const Train = require('./source files/Controllers/Trainlist');
-const Ticket = require('./source files/Controllers/Booktrain')
+const Ticket = require('./source files/Controllers/Booktrain');
 mongoose.connect('mongodb+srv://sherine:flori@cluster0.i6fy0fl.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',{
     dbName:"Booking"
 }).then(()=>{console.log("DATABASE CONNECTED SUCCESSFULLY")}).catch((error)=>{console.log(error)})

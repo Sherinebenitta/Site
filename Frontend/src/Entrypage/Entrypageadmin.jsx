@@ -3,13 +3,51 @@ import axiosinstance from '../axiosInstance/axiosinstance'
 import '../../src/style/entry.css'
 import '../../src/style/LoginPage.css'
 import { useEffect, useState } from 'react'
+import { Page, Text, View, Document, StyleSheet,pdf } from '@react-pdf/renderer';
 
+const styles = StyleSheet.create({
+      page: {
+        padding: 30,
+        fontSize: 12,
+      },
+      table: {
+        display: 'table',
+        width: 'auto',
+        borderWidth: 1,
+        borderColor: 'black',
+        borderStyle: 'solid',
+        marginTop: 10,
+      },
+      tableRow: {
+        flexDirection: 'row',
+      },
+      tableColHeader: {
+        width: '25%',
+        borderStyle: 'solid',
+        borderColor: 'black',
+        borderBottomWidth: 1,
+        backgroundColor: '#eee',
+        padding: 5,
+      },
+      tableCol: {
+        width: '25%',
+        borderStyle: 'solid',
+        borderColor: 'black',
+        borderBottomWidth: 1,
+        padding: 5,
+      },
+      tableCell: {
+        fontSize: 10,
+      },
+    });
 
 export default function Entryadmin(){
     const navigate = useNavigate()
     const [adminget,setadmin] = useState([])
     const [train,settrain] = useState([])
+    const [ticket,setticket] = useState([])
     const admin = localStorage.getItem('Admin_ID')
+
     const logout = ()=>{
         localStorage.clear();      
         navigate('/')
@@ -24,10 +62,52 @@ export default function Entryadmin(){
             settrain(res.data)
         })
     }
+    const getticket = ()=>{
+        axiosinstance.get('http://localhost:8000/getticket').then(res=>{
+            setticket(res.data)
+        })
+    }
+    const MyPdfWithTable = ({data}) => (
+      <Document>
+        <Page size="A4" style={styles.page}>
+          <Text style={{textAlign:'center'}}>Train Booked Details</Text>
+          <View style={styles.table}>
+            <View style={styles.tableRow}>
+              <View style={styles.tableColHeader}><Text style={styles.tableCell}>Passenger Name</Text></View>
+              <View style={styles.tableColHeader}><Text style={styles.tableCell}>TrainName</Text></View>
+              <View style={styles.tableColHeader}><Text style={styles.tableCell}>Date</Text></View>
+              <View style={styles.tableColHeader}><Text style={styles.tableCell}>Time</Text></View>
+            </View>
+            <view>
+            {data.map((item, idx) =><View style={styles.tableRow} key={idx}>
+                <View style={styles.tableCol}><Text style={styles.tableCell}>{item.PassengerName}</Text></View>
+                <View style={styles.tableCol}><Text style={styles.tableCell}>{item?.Train_id?.TrainName}</Text></View>
+                <View style={styles.tableCol}><Text style={styles.tableCell}>{item?.Train_id?.DateAvaliable}</Text></View>
+                <View style={styles.tableCol}><Text style={styles.tableCell}>{item?.Train_id?.JourneyTime}</Text></View>
+              </View>
+    )}
+    </view>
+          </View>
+        </Page>
+      </Document>
+    );
+
+    const GeneratePDF = async ( data ) => {
+        const blob = await pdf(<MyPdfWithTable data={data}/>).toBlob();
+     
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'Bookingdetails.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
+    
 
     useEffect(()=>{
         getadmin();
         gettrain();
+        getticket();
     },[])
 
     return(
@@ -38,7 +118,8 @@ export default function Entryadmin(){
         <Link to={'/Routes'}>ROUTE</Link>
         <Link to={'/Seat'}>SEAT</Link>
         <Link  to={'/Station'}>STATION</Link>                               
-        <button onClick={logout} class="realtime-button">LOGOUT</button>
+        <button onClick={logout} class="realtime-button">Logout</button><br/><br/>
+        <button class='realtime-button' onClick={()=>{GeneratePDF(ticket)}}>Download</button>
         </div>
         <div className='ml-4'>
             <h4 className='text-center'>WELCOME ADMIN {adminget?.AdminId} </h4>
