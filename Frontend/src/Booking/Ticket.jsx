@@ -21,6 +21,7 @@ export default function Ticket(){
 
     const postticket = ()=>{
         axiosinstance.post('http://localhost:8000/book',{PassengerName,Age,Members,Train_id,User_id,Seat_id}).then(res=>{
+            
 
         })
     }
@@ -64,6 +65,7 @@ export default function Ticket(){
       
 
     const onsubmit = e=>{
+        navigate('/pay')
         postticket();
     }
 
@@ -125,7 +127,7 @@ export default function Ticket(){
             }
         </select><br/><br/>         
         <p></p>        
-        {count > 0 && <Link to={'/pay'}><button type="submit">Book Ticket</button></Link>}
+        {count > 0 && <button type="submit">Book Ticket</button>}
     </form>
     </div>
     </div>

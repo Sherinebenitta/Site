@@ -7,12 +7,12 @@ export default function Payment(){
     const navigate = useNavigate()
     
     const onsubmit = (e)=>{
+        navigate('/Profile')
         setcalculate('');
         Swal.fire({
             title: "Payment Successful",
             icon: "success"
         });
-        navigate('/Profile')
     }
     return<div class="login-container_pay">
         <div class="login-form">
